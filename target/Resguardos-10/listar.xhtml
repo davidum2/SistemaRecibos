@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Listado de Material</title>
+    </h:head>
+    <h:body>
+        <p:ajaxStatus style="width: 16px;height: 16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+
+        </p:ajaxStatus>
+
+        <h:form id="materialListForm">
+
+            <p:dataTable id="materialDataTable" value="#{materialBean.material}" var="material" editable="true" rowKey="#{material.idmaterial}" 
+                         selection="#{materialBean.materialSeleccionado}" selectionMode="single" >
+
+                <f:facet name="header">
+                    Listado de Material
+                </f:facet>
+                
+                <p:column headerText="Id">
+                    <h:outputText value="#{material.idmaterial}" />
+                </p:column>
+
+                <p:column headerText="Numero del SIL">
+                   
+                            <h:outputText value="#{material.numeroSIL}" />
+                                    </p:column>
+
+                <p:column headerText="Descripcion">
+                            <h:outputText value="#{material.descripcion}" />
+                </p:column>
+
+                <p:column headerText="Valor">
+                            <h:outputText value="#{material.valor}" />
+                </p:column>
+
+                <p:column headerText="Obseracion">
+                            <h:outputText value="#{material.observacion}" />
+                </p:column>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="index" />
+                    <p:spacer height="5px"/>
+                </f:facet>
+
+            </p:dataTable>
+        </h:form>
+
+
+    </h:body>
+</html>
